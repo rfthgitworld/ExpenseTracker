@@ -91,6 +91,19 @@ def delete_expense(request, pk):
     return render(request, 'expenses/expense_detail.html', {'expense': exp})
 
 @login_required
+def delete_category(request, pk):
+    """Deletes a category owned by the user via a POST request."""
+    cat = get_object_or_404(Category, pk=pk, user=request.user)
+    if request.method == 'POST':
+        # Deleting the category will set its Foreign Key on any related
+        # expenses to NULL, as defined in the Expense model.
+        cat.delete()
+        messages.success(request, f"Category '{cat.name}' deleted.")
+        return redirect('expenses:category_list')
+    # Prevent deletion via GET request
+    return redirect('expenses:category_list')
+
+@login_required
 def category_list(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)

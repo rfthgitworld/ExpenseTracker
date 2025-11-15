@@ -10,9 +10,18 @@
 <ul class="list-group mt-3">
   {% for c in categories %}
     <li class="list-group-item d-flex justify-content-between align-items-center">
-      {{ c.name }}
-      <span class="badge bg-secondary">{{ c.expenses.count }}</span>
-    </li>
+      <div>
+        {{ c.name }}
+        <span class="badge bg-secondary rounded-pill ms-2">{{ c.expenses.count }}</span>
+      </div>
+      <form method="post" action="{% url 'expenses:delete_category' c.pk %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm btn-outline-danger" 
+                onclick="return confirm('Are you sure you want to delete the category &quot;{{ c.name }}&quot;? All associated expenses will become uncategorized.')">
+          Delete
+        </button>
+      </form>
+      </li>
   {% empty %}
     <li class="list-group-item">No categories yet.</li>
   {% endfor %}
