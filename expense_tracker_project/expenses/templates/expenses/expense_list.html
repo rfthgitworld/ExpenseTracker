@@ -3,13 +3,26 @@
 
 {% block content %}
 <h2>All Expenses</h2>
+
 <table class="table table-hover">
-  <thead><tr><th>Title</th><th>Category</th><th>Amount</th><th>Date</th><th>Actions</th></tr></thead>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
   <tbody>
     {% for e in expenses %}
     <tr>
       <td>{{ e.title }}</td>
-      <td>{{ e.category.name if e.category }}</td>
+
+      <!-- FIX APPLIED -->
+      <td>{{ e.category.name|default:"No Category" }}</td>
+
       <td>${{ e.amount }}</td>
       <td>{{ e.date }}</td>
       <td>
@@ -18,8 +31,11 @@
       </td>
     </tr>
     {% empty %}
-    <tr><td colspan="5">No expenses yet</td></tr>
+    <tr>
+      <td colspan="5">No expenses yet</td>
+    </tr>
     {% endfor %}
   </tbody>
 </table>
+
 {% endblock %}

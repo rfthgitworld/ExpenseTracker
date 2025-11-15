@@ -11,6 +11,7 @@
         <a href="{% url 'expenses:add_expense' %}" class="btn btn-primary">Add Expense</a>
       </div>
     </div>
+
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Quick Actions</h5>
@@ -22,22 +23,30 @@
   <div class="col-md-8">
     <h4>Recent Expenses</h4>
     <table class="table table-striped">
-      <thead><tr><th>Title</th><th>Category</th><th>Amount</th><th>Date</th><th></th></tr></thead>
+      <thead>
+        <tr><th>Title</th><th>Category</th><th>Amount</th><th>Date</th><th></th></tr>
+      </thead>
       <tbody>
         {% for e in recent %}
         <tr>
           <td>{{ e.title }}</td>
-          <td>{{ e.category.name if e.category }}</td>
+
+          <!-- FIX APPLIED HERE -->
+          <td>{{ e.category.name|default:"No Category" }}</td>
+
           <td>${{ e.amount }}</td>
           <td>{{ e.date }}</td>
           <td>
             <a class="btn btn-sm btn-outline-secondary" href="{% url 'expenses:expense_detail' e.pk %}">View</a>
-            <button class="btn btn-sm btn-outline-primary edit-expense-btn" 
-                    data-id="{{ e.pk }}" 
-                    data-title="{{ e.title }}" 
-                    data-amount="{{ e.amount }}" 
-                    data-date="{{ e.date }}" 
-                    data-notes="{{ e.notes|default:'' }}">Edit</button>
+
+            <button class="btn btn-sm btn-outline-primary edit-expense-btn"
+                    data-id="{{ e.pk }}"
+                    data-title="{{ e.title }}"
+                    data-amount="{{ e.amount }}"
+                    data-date="{{ e.date }}"
+                    data-notes="{{ e.notes|default:'' }}">
+              Edit
+            </button>
           </td>
         </tr>
         {% empty %}
