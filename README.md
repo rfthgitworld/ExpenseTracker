@@ -26,11 +26,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Dependencies
 
-First, create a direct called (`expense_tracker_project/`) and navigate into the directory and install the required Python packages using pip:
+First, navigate into the directory (`expense_tracker_project/`) and install the required Python packages using pip:
 
 ```
-mkdir expense_tracker_project
-
 cd expense_tracker_project
 
 pip install -r requirements.txt
@@ -40,14 +38,14 @@ pip install -r requirements.txt
 
 Before running the application, the database must be initialized and a superuser created. Ensure you are in the `expense_tracker_project/` directory where `manage.py` is located.
 
-1. **Create database migrations:** This command generates the SQL entries required by the models in the `expenses` app.**
+1. **Create database migrations:** This command generates the SQL entries required by the models in the `expenses` app.
 
-2.  **Run the Flask initialization command:**
+2.  Run the Flask initialization command:
 
     ```
     python manage.py makemigrations
     ```
-3. **Apply migrations to the database:** This command executes the migrations, creating the necessary database tables (and the `db.sqlite3 file`).**
+3. **Apply migrations to the database:** This command executes the migrations, creating the necessary database tables (and the `db.sqlite3 file`).
 
    ```
     python manage.py migrate
@@ -62,7 +60,7 @@ Before running the application, the database must be initialized and a superuser
 
 Once the database is initialized, you can start the development server
 
-1. **Run the Django Development Server:** Ensure you are in the expense_tracker_project/ directory..**
+1. **Run the Django Development Server:** Ensure you are in the expense_tracker_project/ directory.
 
     ```
     python manage.py runserver
@@ -74,13 +72,7 @@ Once the database is initialized, you can start the development server
 
 You can now register a new user or log in with your superuser credentials to begin tracking your expenses.
 
-
-
-
-
-
-
-  
+ 
 ***
 
 ## Authors
