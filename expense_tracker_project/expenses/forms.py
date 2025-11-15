@@ -6,6 +6,8 @@ from .models import Expense, Category
 User = get_user_model()
 
 class SignUpForm(UserCreationForm):
+    email = forms.EmailField(required=False)
+
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
@@ -16,7 +18,7 @@ class ExpenseForm(forms.ModelForm):
         fields = ['title', 'amount', 'date', 'category', 'notes']
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}),
-            'notes': forms.Textarea(attrs={'rows': 3})
+            'notes': forms.Textarea(attrs={'rows': 3}),
         }
 
 class CategoryForm(forms.ModelForm):
