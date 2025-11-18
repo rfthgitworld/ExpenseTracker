@@ -16,6 +16,8 @@ The **Expense Tracker** is a personal web-based financial management tool built 
 * **Expense Tracking:** Users can record expenses with details like title, amount, date, and notes.
 * **Category Management:** Expenses are linked to user-specific categories for easy filtering and organization.
 * **Dashboard View:** A centralized dashboard provides quick access to recent expenses and the total amount spent.
+* **Responsive Design:** The application is styled with Bootstrap to ensure a user-friendly experience across devices.
+* **Monthly Summary:** Users can view a summary of their expenses for the current month.
 * **SQLite Database:** Uses SQLite as the default database for development and testing.
 
 ***
@@ -94,4 +96,4 @@ Rifat Hossain
 * [Django Tutorial](https://www.w3schools.com/django/index.php)
 * [Bootstrap 5 (CSS framework for styling)](https://getbootstrap.com/)
 * [SQLite (Database)](https://www.sqlite.org/index.html)
-* [ChatGPT](https://chatgpt.com/g/g-p-69188a96679c8191998ff2e35f0072dc-django-project/project)
+* [ChatGPT](https://chatgpt.com/g/g-p-69188a96679c81919ff2e35f0072dc-django-project/project)
