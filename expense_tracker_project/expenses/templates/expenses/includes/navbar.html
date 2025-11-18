@@ -15,6 +15,7 @@
           <li class="nav-item"><a class="nav-link" href="{% url 'expenses:expense_list' %}">Expenses</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'expenses:add_expense' %}">Add Expense</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'expenses:category_list' %}">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'expenses:monthly_summary' %}">Report</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'expenses:logout_confirm' %}">Logout</a></li>
         {% else %}
           <li class="nav-item"><a class="nav-link" href="{% url 'expenses:register' %}">Register</a></li>

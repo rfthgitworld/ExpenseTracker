@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.db.models.functions import TruncMonth
+import json
 
 from .forms import SignUpForm, ExpenseForm, CategoryForm
 from .models import Expense, Category
@@ -120,3 +122,19 @@ def category_list(request):
         form = CategoryForm()
     cats = Category.objects.filter(user=request.user)
     return render(request, 'expenses/category_list.html', {'categories': cats, 'form': form})
+
+@login_required
+def monthly_summary(request):
+    # Group by month -> SUM(expense.amount)
+    monthly_data = (
+        Expense.objects
+        .filter(user=request.user)
+        .annotate(month=TruncMonth("date"))
+        .values("month")
+        .annotate(total=Sum("amount"))
+        .order_by("-month")
+    )
+
+    return render(request, "expenses/monthly_summary.html", {
+        "monthly_data": monthly_data
+    })
