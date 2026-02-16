@@ -1,11 +1,4 @@
-### INF601 - Advanced Programming in Python
-### Rifat Hossain   
-### Mini Project 4
- 
-***
-
-
-# Expense Tracker (Django Application)
+# Expense Tracker (A Django Application)
 
 ## Description
 
